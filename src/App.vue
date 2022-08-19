@@ -1,30 +1,42 @@
+<script>
+import CardBlock from "./components/CardBlock";
+export default {
+  name: "App",
+  components: {
+    CardBlock,
+  },
+
+  setup() {
+    const cardList = [];
+
+    for (let i = 0; i < 16; i++) {
+      cardList.push(i);
+    }
+
+    return {
+      cardList,
+    };
+  },
+};
+</script>
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <h1>Memory Game</h1>
+  <section class="game-board">
+    <CardBlock v-for="(card, index) in cardList" :key="`card-${index}`" :value="card"></CardBlock>
+  </section>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.card {
+  border: 5px solid #ccc;
 }
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.game-board {
+  display: grid;
+  grid-template-columns: 100px 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px 100px;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  justify-content: center;
 }
 </style>
