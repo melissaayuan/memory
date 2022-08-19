@@ -1,4 +1,5 @@
 <script>
+import { ref } from "vue";
 import CardBlock from "./components/CardBlock";
 export default {
   name: "App",
@@ -7,14 +8,23 @@ export default {
   },
 
   setup() {
-    const cardList = [];
+    const cardList = ref([]);
 
     for (let i = 0; i < 16; i++) {
-      cardList.push(i);
+      cardList.value.push({
+        value: i,
+        visible: false,
+        position: i,
+      });
     }
+
+    const flipCard = (payload) => {
+      cardList.value[payload.position].visible = true;
+    };
 
     return {
       cardList,
+      flipCard,
     };
   },
 };
@@ -23,7 +33,14 @@ export default {
 <template>
   <h1>Memory Game</h1>
   <section class="game-board">
-    <CardBlock v-for="(card, index) in cardList" :key="`card-${index}`" :value="card"></CardBlock>
+    <CardBlock
+      v-for="(card, index) in cardList"
+      :key="`card-${index}`"
+      :value="card.value"
+      :visible="card.visible"
+      :position="card.position"
+      @select-card="flipCard"
+    ></CardBlock>
   </section>
 </template>
 
