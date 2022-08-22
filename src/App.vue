@@ -1,4 +1,5 @@
 <script>
+import _ from "lodash";
 import { computed, ref, watch } from "vue";
 import CardBlock from "./components/CardBlock";
 export default {
@@ -25,10 +26,14 @@ export default {
       return remainingCards / 2;
     });
 
+    const shuffleCards = () => {
+      cardList.value = _.shuffle(cardList.value);
+    };
+
     for (let i = 0; i < 16; i++) {
       cardList.value.push({
-        value: 10,
-        visible: false,
+        value: i,
+        visible: true,
         position: i,
         matched: false,
       });
@@ -73,6 +78,7 @@ export default {
       flipCard,
       userSelection,
       status,
+      shuffleCards,
     };
   },
 };
@@ -92,6 +98,7 @@ export default {
     ></CardBlock>
   </section>
   <h2>{{ status }}</h2>
+  <button v-on:click="shuffleCards">Shuffle Cards</button>
 </template>
 
 <style>
