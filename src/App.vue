@@ -43,7 +43,7 @@ export default {
       });
     };
 
-    const cardItems = [1, 2, 3, 4, 5, 6, 7, 8];
+    const cardItems = ["unicorn", "sun", "icecreamcone", "raincloud", "rainbow", "crown", "popsicle", "cloud"];
 
     cardItems.forEach((item) => {
       cardList.value.push({
@@ -133,19 +133,44 @@ export default {
     ></CardBlock>
   </section>
   <h2>{{ status }}</h2>
-  <button v-on:click="restartGame">Restart Game</button>
+  <button v-on:click="restartGame" class="button">Restart Game</button>
 </template>
 
 <style>
-.card {
-  border: 5px solid #ccc;
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
+
+h1 {
+  margin-top: 0;
+  color: #778899;
+}
+
+h2 {
+  color: #778899;
+}
+
+#app {
+  text-align: center;
+  background-color: #add8e6;
+  height: 100vh;
+  padding-top: 60px;
+}
+
 .game-board {
   display: grid;
-  grid-template-columns: 100px 100px 100px 100px;
-  grid-template-rows: 100px 100px 100px 100px;
+  grid-template-columns: repeat(4, 120px);
+  grid-template-rows: repeat(4, 120px);
   grid-column-gap: 30px;
   grid-row-gap: 30px;
   justify-content: center;
+}
+
+.button {
+  color: black;
+  font-weight: bold;
+  background-color: white;
 }
 </style>
