@@ -1,6 +1,7 @@
 <script>
 import _ from "lodash";
 import { computed, ref, watch } from "vue";
+import { launchConfetti } from "./utilities/confetti";
 import CardBlock from "./components/CardBlock";
 export default {
   name: "App",
@@ -81,6 +82,12 @@ export default {
         userSelection.value[0] = payload;
       }
     };
+
+    watch(remainingPairs, (currentValue) => {
+      if (currentValue === 0) {
+        launchConfetti();
+      }
+    });
 
     watch(
       userSelection,
