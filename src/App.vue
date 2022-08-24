@@ -12,6 +12,13 @@ export default {
   setup() {
     const cardList = ref([]);
     const userSelection = ref([]);
+    const newPlayer = ref(true);
+
+    const startGame = () => {
+      newPlayer.value = false;
+
+      restartGame();
+    };
 
     const status = computed(() => {
       if (remainingPairs.value === 0) {
@@ -53,7 +60,7 @@ export default {
       cardList.value.push({
         value: item,
         variant: 2,
-        visible: false,
+        visible: true,
         position: null,
         matched: false,
       });
@@ -118,6 +125,8 @@ export default {
       userSelection,
       status,
       restartGame,
+      startGame,
+      newPlayer,
     };
   },
 };
@@ -137,7 +146,8 @@ export default {
     ></CardBlock>
   </transition-group>
   <h2>{{ status }}</h2>
-  <button v-on:click="restartGame" class="button">Restart Game</button>
+  <button v-if="newPlayer" v-on:click="startGame" class="button">Start Game</button>
+  <button v-else v-on:click="restartGame" class="button">Restart Game</button>
 </template>
 
 <style>
