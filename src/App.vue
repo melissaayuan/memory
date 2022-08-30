@@ -47,7 +47,7 @@ export default {
       });
     };
 
-    const cardItems = ["unicorn", "sun", "icecreamcone", "raincloud", "rainbow", "crown", "popsicle", "cloud"];
+    const cardItems = ["unicorn", "sun", "icecreamcone", "raincloud", "rainbow", "crown", "popsicle", "cloud2"];
 
     cardItems.forEach((item) => {
       cardList.value.push({
