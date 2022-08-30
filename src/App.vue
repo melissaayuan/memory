@@ -47,7 +47,20 @@ export default {
       });
     };
 
-    const cardItems = ["unicorn", "sun", "icecreamcone", "raincloud", "rainbow", "crown", "popsicle", "cloud2"];
+    const cardItems = [
+      "unicorn",
+      "sun",
+      "icecreamcone",
+      "raincloud",
+      "rainbow",
+      "crown",
+      "popsicle",
+      "cloud2",
+      "prince",
+      "princess",
+      "stars",
+      "wand",
+    ];
 
     cardItems.forEach((item) => {
       cardList.value.push({
@@ -175,7 +188,7 @@ h2 {
 
 .game-board {
   display: grid;
-  grid-template-columns: repeat(4, 120px);
+  grid-template-columns: repeat(6, 120px);
   grid-template-rows: repeat(4, 120px);
   grid-column-gap: 30px;
   grid-row-gap: 30px;
